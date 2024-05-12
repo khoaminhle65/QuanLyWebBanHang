@@ -61,14 +61,14 @@ class ProductController extends Controller
     }
     public function unactive_product($product_id){
       
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>1]);
+        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>0]);
         Session::put('message','Không kích hoạt sản phẩm thành công');
         return Redirect::to('all-product');
 
     }
     public function active_product($product_id){
         
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>0]);
+        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status'=>1]);
         Session::put('message','kích hoạt sản phẩm thành công');
         return Redirect::to('all-product');
     }
