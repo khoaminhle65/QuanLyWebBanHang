@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <div class="features_items"><!--features_items-->
-                        
+       
                         <h2 class="title text-center">Sản phẩm mới nhất</h2>
                         
                         @foreach($all_product as $key => $product)
@@ -46,7 +46,7 @@
                         @endforeach
                     </div><!--features_items-->
                       <ul class="pagination pagination-sm m-t-none m-b-none">
-                        
+                      {!!$all_product->links()!!}
                       </ul>
         <!--/recommended_items-->
 @endsection

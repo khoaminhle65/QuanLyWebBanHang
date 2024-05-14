@@ -8,7 +8,7 @@
                             <a href="{{URL::to('chi-tiet/'.$product->product_name)}}">
                                 <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" alt="" />
+                                            <img src="{{URL::to('uploads/product/'.$product->product_image)}}" alt="" />
                                             <h2>{{number_format($product->product_price).' '.'VNĐ'}}</h2>
                                             <p>{{$product->product_name}}</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
@@ -25,6 +25,11 @@
                             </div>
                         </div>
                         @endforeach
+                        
                     </div><!--features_items--> 
-        <!--/recommended_items-->
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                      {!!$search_product->links()!!}
+                      </ul>
+                    </div><!--features_items-->
+                      
 @endsection
