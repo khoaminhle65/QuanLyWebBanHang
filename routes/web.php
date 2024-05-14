@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 //Frontend
 Route::get('/', [HomeController::class, 'index']);
 Route::get('trangchu', [HomeController::class, 'index'])->name('home');
+Route::post('tim-kiem', [HomeController::class, 'search'])->name('search');
 //Danh muc san pham trang chu
 Route::get('chi-tiet/{product_name}',[ProductController::class, 'details_product'])->name('show_details');
 Route::get('danh-muc/{category_id}',[CategoryProductController::class, 'show_category_home'])->name('show_category');
