@@ -139,7 +139,7 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="{{URL::to('trang-chu')}}" class="active">Trang chủ</a></li>
+                                <li><a href="{{URL::to('trangchu')}}" class="active">Trang chủ</a></li>
                                 <li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         @foreach($category as $key => $danhmuc)
@@ -156,7 +156,7 @@
                         </div>
                     </div>
                     <div class="col-sm-5">
-                    <form action="{{URL::to('/tim-kiem')}}" method="POST">
+                    <form action="{{URL::to('/tim-kiem')}}" method="">
                             {{csrf_field()}}
                         <div class="search_box pull-right">
                             <input type="text" name="keywords_submit" placeholder="Tìm kiếm sản phẩm"/>
