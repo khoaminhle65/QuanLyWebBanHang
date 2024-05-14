@@ -116,7 +116,7 @@ class ProductController extends Controller
         Session::put('message','Xóa sản phẩm thành công');
         return Redirect::to('all-product');
     }
-    public function details_product($product_slug , Request $request){
+    public function details_product($product_name , Request $request){
         //slide
       // $slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
 
@@ -127,11 +127,6 @@ class ProductController extends Controller
        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id');
      
-
-      
-      
-      
-
        return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product);
 
    }
