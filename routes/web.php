@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,7 +70,16 @@ Route::get('active-product/{product_id', [ProductController::class, 'active_prod
 Route::get('edit-product/{product_id}', [ProductController::class, 'edit_product'])->name('edit_product');
 Route::post('update-product/{product_id}', [ProductController::class, 'update_product'])->name('updatate_product');
 Route::get('delete-product/{product_id}', [ProductController::class, 'delete_product'])->name('delete_product');
-
+// gio hang
+Route::post('/update-cart-quantity', [CartController::class, 'update_cart_quantity']);
+Route::post('/update-cart', [CartController::class, 'update_cart']);
+Route::post('/save-cart', [CartController::class, 'save_cart']);
+Route::post('/add-cart-ajax', [CartController::class, 'add_cart_ajax']);
+Route::get('/show-cart', [CartController::class, 'show_cart']);
+Route::get('/gio-hang', [CartController::class, 'gio_hang']);
+Route::get('/delete-to-cart/{rowId}', [CartController::class, 'delete_to_cart']);
+Route::get('/del-product/{session_id}', [CartController::class, 'delete_product']);
+Route::get('/del-all-product', [CartController::class, 'delete_all_product']);
 
 
 
