@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---------Seo--------->
-    
-  
+    <meta name="description" content="{{$meta_desc}}">
+    <meta name="keywords" content="{{$meta_keywords}}"/>
     <meta name="robots" content="INDEX,FOLLOW"/>
-   
+    <link  rel="canonical" href="{{$url_canonical}}" />
     <meta name="author" content="">
     <link  rel="icon" type="image/x-icon" href="" />
     
@@ -18,14 +18,14 @@
       <meta property="og:url" content="{{$url_canonical}}" />
       <meta property="og:type" content="website" /> --}}
     <!--//-------Seo--------->
-    <!--  -->
-    <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/price-range.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet">
+    <title>{{$meta_title}}</title>
+    <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/price-range.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/responsive.css')}}" rel="stylesheet">
      <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet">
    
 
@@ -33,7 +33,7 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="{{('frontend/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{('public/frontend/images/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
@@ -74,9 +74,31 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{('frontend/images/home/logo.png')}}" alt="" /></a>
+                            <a href="index.html"><img src="{{('public/frontend/images/home/logo.png')}}" alt="" /></a>
                         </div>
-
+                        <div class="btn-group pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                    USA
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Canada</a></li>
+                                    <li><a href="#">UK</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                    DOLLAR
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Canadian Dollar</a></li>
+                                    <li><a href="#">Pound</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
@@ -88,32 +110,32 @@
                                    $shipping_id = Session::get('shipping_id');
                                    if($customer_id!=NULL && $shipping_id==NULL){ 
                                  ?>
-                                  <li><a href="{{URL::to('checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                  <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
                                 
                                 <?php
                                  }elseif($customer_id!=NULL && $shipping_id!=NULL){
                                  ?>
-                                 <li><a href="{{URL::to('payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                 <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
                                  <?php 
                                 }else{
                                 ?>
-                                 <li><a href="{{URL::to('dang-nhap')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                 <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
                                 <?php
                                  }
                                 ?>
                                 
 
-                                <li><a href="{{URL::to('gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                                 <?php
                                    $customer_id = Session::get('customer_id');
                                    if($customer_id!=NULL){ 
                                  ?>
-                                  <li><a href="{{URL::to('logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+                                  <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                 
                                 <?php
                             }else{
                                  ?>
-                                 <li><a href="{{URL::to('dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+                                 <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                  <?php 
                              }
                                  ?>
@@ -139,24 +161,24 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="{{URL::to('trangchu')}}" class="active">Trang chủ</a></li>
+                                <li><a href="{{URL::to('/trang-chu')}}" class="active">Trang chủ</a></li>
                                 <li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         @foreach($category as $key => $danhmuc)
-                         <li><a href="{{URL::to('danh-muc/'.$danhmuc->category_id)}}">{{$danhmuc->category_name}}</a></li>
+                                        <li><a href="{{URL::to('/danh-muc/'.$danhmuc->slug_category_product)}}">{{$danhmuc->category_name}}</a></li>
                                         @endforeach
                                     </ul>
                                 </li> 
                                 <li class="dropdown"><a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
                                     
                                 </li> 
-                                <li><a href="">Giỏ hàng</a></li>
-                                <li><a href="">Liên hệ</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}">Giỏ hàng</a></li>
+                                <li><a href="{{URL::to('/lien-he')}}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-5">
-                    <form action="{{URL::to('/tim-kiem')}}" method="">
+                        <form action="{{URL::to('/tim-kiem')}}" method="POST">
                             {{csrf_field()}}
                         <div class="search_box pull-right">
                             <input type="text" name="keywords_submit" placeholder="Tìm kiếm sản phẩm"/>
@@ -188,18 +210,18 @@
                         @php 
                             $i = 0;
                         @endphp
-                    
+                        @foreach($slider as $key => $slide)
                             @php 
                                 $i++;
                             @endphp
                             <div class="item {{$i==1 ? 'active' : '' }}">
                                 
                                 <div class="col-sm-12">
-                                  
+                                    <img alt="{{$slide->slider_desc}}" src="{{asset('public/uploads/slider/'.$slide->slider_image)}}" height="200" width="100%" class="img img-responsive img-slider">
                                    
                                 </div>
                             </div>
-                        
+                        @endforeach  
                           
                             
                         </div>
@@ -228,9 +250,7 @@
                            
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                           
-                                <li><a href="{{URL::to('danh-muc/'.$cate->category_id)}}"> <span class="pull-right"></span>{{$cate->category_name}}</a></li>
-                               
+                                    <h4 class="panel-title"><a href="{{URL::to('/danh-muc/'.$cate->slug_category_product)}}">{{$cate->category_name}}</a></h4>
                                 </div>
                             </div>
                         @endforeach
@@ -241,7 +261,7 @@
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($brand as $key => $brand)
-                                    <li><a href="{{URL::to('thuong-hieu/'.$brand->brand_id)}}"> <span class="pull-right"></span>{{$brand->brand_name}}</a></li>
+                                    <li><a href="{{URL::to('/thuong-hieu/'.$brand->brand_slug)}}"> <span class="pull-right"></span>{{$brand->brand_name}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -265,13 +285,73 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                   
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2><span>e</span>-shopper</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+                        </div>
+                    </div>
                     <div class="col-sm-7">
                         <div class="col-sm-3">
-                            
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                        <img src="{{('public/frontend/images/iframe1.png')}}" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Circle of Hands</p>
+                                <h2>24 DEC 2014</h2>
+                            </div>
+                        </div>
                         
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                         <img src="{{('public/frontend/images/iframe2.png')}}" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Circle of Hands</p>
+                                <h2>24 DEC 2014</h2>
+                            </div>
+                        </div>
                         
-                     
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                         <img src="{{('public/frontend/images/iframe3.png')}}" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Circle of Hands</p>
+                                <h2>24 DEC 2014</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                         <img src="{{('public/frontend/images/iframe4.png')}}" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Circle of Hands</p>
+                                <h2>24 DEC 2014</h2>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-3">
                         <div class="address">
                             <img src="images/home/map.png" alt="" />
@@ -299,7 +379,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                           
+                            <h2>Quock Shop</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">T-Shirt</a></li>
                                 <li><a href="#">Mens</a></li>
@@ -350,7 +430,10 @@
         
         <div class="footer-bottom">
             <div class="container">
-                
+                <div class="row">
+                    <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+                    <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+                </div>
             </div>
         </div>
         
@@ -358,12 +441,12 @@
     
 
   
-    <script src="{{asset('frontend/js/jquery.js')}}"></script>
-    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
-    <script src="{{asset('frontend/js/price-range.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
-    <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
+    <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/frontend/js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('public/frontend/js/price-range.js')}}"></script>
+    <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{asset('public/frontend/js/main.js')}}"></script>
 
 
     <script src="{{asset('public/frontend/js/sweetalert.min.js')}}"></script>
@@ -403,7 +486,7 @@
                         var _token = $('input[name="_token"]').val();
 
                         $.ajax({
-                            url: '{{url('confirm-order')}}',
+                            url: '{{url('/confirm-order')}}',
                             method: 'POST',
                             data:{shipping_email:shipping_email,shipping_name:shipping_name,shipping_address:shipping_address,shipping_phone:shipping_phone,shipping_notes:shipping_notes,_token:_token,order_fee:order_fee,order_coupon:order_coupon,shipping_method:shipping_method},
                             success:function(){
@@ -446,7 +529,7 @@
                 }else{
 
                     $.ajax({
-                        url: '{{url('add-cart-ajax')}}',
+                        url: '{{url('/add-cart-ajax')}}',
                         method: 'POST',
                         data:{cart_product_id:cart_product_id,cart_product_name:cart_product_name,cart_product_image:cart_product_image,cart_product_price:cart_product_price,cart_product_qty:cart_product_qty,_token:_token,cart_product_quantity:cart_product_quantity},
                         success:function(){
@@ -461,7 +544,7 @@
                                     closeOnConfirm: false
                                 },
                                 function() {
-                                    window.location.href = "{{url('gio-hang')}}";
+                                    window.location.href = "{{url('/gio-hang')}}";
                                 });
 
                         }
@@ -487,7 +570,7 @@
                 result = 'wards';
             }
             $.ajax({
-                url : '{{url('select-delivery-home')}}',
+                url : '{{url('/select-delivery-home')}}',
                 method: 'POST',
                 data:{action:action,ma_id:ma_id,_token:_token},
                 success:function(data){
@@ -509,7 +592,7 @@
                     alert('Làm ơn chọn để tính phí vận chuyển');
                 }else{
                     $.ajax({
-                    url : '{{url('calculate-fee')}}',
+                    url : '{{url('/calculate-fee')}}',
                     method: 'POST',
                     data:{matp:matp,maqh:maqh,xaid:xaid,_token:_token},
                     success:function(){

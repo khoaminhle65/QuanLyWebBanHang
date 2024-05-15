@@ -4,7 +4,7 @@
 <div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="{{URL::to('public/uploads/product/')}}" alt="" />
+								<img src="{{URL::to('/public/uploads/product/'.$value->product_image)}}" alt="" />
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -13,9 +13,9 @@
 								    <div class="carousel-inner">
 
 										<div class="item active">
-										  <a href=""><img src="{{URL::to('frontend/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('frontend/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('frontend/images/similar3.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/similar1.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/similar2.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/similar3.jpg')}}" alt=""></a>
 										</div>
 										
 										
@@ -34,12 +34,12 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-							<img src="{{URL::to('uploads/product/'.$value->product_image)}}" alt="" />
+								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>{{$value->product_name}}</h2>
 								<p>Mã ID: {{$value->product_id}}</p>
 								<img src="images/product-details/rating.png" alt="" />
 								
-								<form action="{{URL::to('save-cart')}}" method="POST">
+								<form action="{{URL::to('/save-cart')}}" method="POST">
 									@csrf
 									<input type="hidden" value="{{$value->product_id}}" class="cart_product_id_{{$value->product_id}}">
 
@@ -47,7 +47,7 @@
 
                                             <input type="hidden" value="{{$value->product_image}}" class="cart_product_image_{{$value->product_id}}">
 
-                                         
+                                            <input type="hidden" value="{{$value->product_quantity}}" class="cart_product_quantity_{{$value->product_id}}">
 
                                             <input type="hidden" value="{{$value->product_price}}" class="cart_product_price_{{$value->product_id}}">
                                           
@@ -119,6 +119,37 @@
 						</div>
 					</div><!--/category-tab-->
 	@endforeach
-					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">Sản phẩm liên quan</h2>
+						
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">
+							@foreach($relate as $key => $lienquan)
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											 <div class="single-products">
+		                                        <div class="productinfo text-center product-related">
+		                                            <img src="{{URL::to('public/uploads/product/'.$lienquan->product_image)}}" alt="" />
+		                                            <h2>{{number_format($lienquan->product_price,0,',','.').' '.'VNĐ'}}</h2>
+		                                            <p>{{$lienquan->product_name}}</p>
+		                                         
+		                                        </div>
+		                                      
+                                			</div>
+										</div>
+									</div>
+							@endforeach		
+
+								
+								</div>
+									
+							</div>
+									
+						</div>
+					</div><!--/recommended_items-->
+					{{--   <ul class="pagination pagination-sm m-t-none m-b-none">
+                       {!!$relate->links()!!}
+                      </ul> --}}
 
 @endsection

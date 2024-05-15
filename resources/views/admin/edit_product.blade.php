@@ -17,7 +17,7 @@
 
                             <div class="position-center">
                                 @foreach($edit_product as $key => $pro)
-                                <form role="form" action="{{URL::to('update-product/'.$pro->product_id)}}" method="post" enctype="multipart/form-data">
+                                <form role="form" action="{{URL::to('/update-product/'.$pro->product_id)}}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label>
@@ -25,9 +25,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">SL sản phẩm</label>
-                                    <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="convert_slug" ">
+                                    <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="convert_slug" value="{{$pro->product_quantity}}">
                                 </div>
-                               
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Slug</label>
+                                    <input type="text" name="product_slug" class="form-control" id="exampleInputEmail1" value="{{$pro->product_slug}}">
+                                </div>
                                      <div class="form-group">
                                     <label for="exampleInputEmail1">Giá sản phẩm</label>
                                     <input type="text" value="{{$pro->product_price}}" name="product_price" class="form-control" id="exampleInputEmail1" >
@@ -35,7 +38,7 @@
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                                     <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
-                                    <img src="{{URL::to('uploads/product/'.$pro->product_image)}}" height="100" width="100">
+                                    <img src="{{URL::to('public/uploads/product/'.$pro->product_image)}}" height="100" width="100">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả sản phẩm</label>

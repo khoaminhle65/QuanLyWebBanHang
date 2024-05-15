@@ -13,7 +13,7 @@ html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
     overflow-x: hidden;
-    background: url(../img/) no-repeat 0px 0px;
+    background: url(../images/bg.jpg) no-repeat 0px 0px;
 	background-size:cover;
 }
 body a{
@@ -37,6 +37,7 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+
 	/*sidebar navigation*/
 #sidebar {
     width:240px;
@@ -56,6 +57,9 @@ span.fa-thumb-styling.fa.fa-thumbs-up {
     font-size: 28px;
     color: green;
 }
+a.active.styling-edit {
+    font-size: 20px;
+}
 #sidebar ul li {
     position: relative;
 }
@@ -71,7 +75,7 @@ span.fa-thumb-styling.fa.fa-thumbs-up {
     height:17px;
     width:17px;
     display:inline-block;
-    background:url(../img/nav-expand.png) no-repeat top;
+    background:url(../images/nav-expand.png) no-repeat top;
     border-radius:3px;
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
@@ -79,7 +83,7 @@ span.fa-thumb-styling.fa.fa-thumbs-up {
     right:10px;
 }
 .active .dcjq-icon {
-    background:url(../img/nav-expand.png) no-repeat bottom;
+    background:url(../images/nav-expand.png) no-repeat bottom;
     border-radius:3px;
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
@@ -88,7 +92,7 @@ span.fa-thumb-styling.fa.fa-thumbs-up {
     height:17px;
     width:17px;
     display:inline-block;
-    background:url(../img/acc-expand.png) no-repeat top;
+    background:url(../images/acc-expand.png) no-repeat top;
     border-radius:3px;
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
@@ -96,7 +100,7 @@ span.fa-thumb-styling.fa.fa-thumbs-up {
     right:10px;
 }
 .right-side-accordion .active .dcjq-icon {
-    background:url(../img/acc-expand.png) no-repeat bottom;
+    background:url(../images/acc-expand.png) no-repeat bottom;
     border-radius:3px;
     -moz-border-radius:3px;
     -webkit-border-radius: 3px;
@@ -227,7 +231,7 @@ ul.sidebar-menu li a.active i {
     left:0;
     right:0;
     z-index:1002;
-    background:rgb(207, 180, 240);
+    background:rgb(240, 188, 180);
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
     -o-transition:all .3s ease-in-out;

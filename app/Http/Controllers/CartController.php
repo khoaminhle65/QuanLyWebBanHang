@@ -13,9 +13,52 @@ use App\Coupon;
 session_start();
 class CartController extends Controller
 {
+<<<<<<< Updated upstream
     public function gio_hang(Request $request){
          //seo 
          //slide
+=======
+    public function check_coupon(Request $request){
+        $data = $request->all();
+        $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
+        if($coupon){
+            $count_coupon = $coupon->count();
+            if($count_coupon>0){
+                $coupon_session = Session::get('coupon');
+                if($coupon_session==true){
+                    $is_avaiable = 0;
+                    if($is_avaiable==0){
+                        $cou[] = array(
+                            'coupon_code' => $coupon->coupon_code,
+                            'coupon_condition' => $coupon->coupon_condition,
+                            'coupon_number' => $coupon->coupon_number,
+
+                        );
+                        Session::put('coupon',$cou);
+                    }
+                }else{
+                    $cou[] = array(
+                            'coupon_code' => $coupon->coupon_code,
+                            'coupon_condition' => $coupon->coupon_condition,
+                            'coupon_number' => $coupon->coupon_number,
+
+                        );
+                    Session::put('coupon',$cou);
+                }
+                Session::save();
+                return redirect()->back()->with('message','Thêm mã giảm giá thành công');
+            }
+
+        }else{
+            return redirect()->back()->with('error','Mã giảm giá không đúng');
+        }
+    }   
+    public function gio_hang(Request $request){
+         //seo 
+         //slide
+        $slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
+
+>>>>>>> Stashed changes
         $meta_desc = "Giỏ hàng của bạn"; 
         $meta_keywords = "Giỏ hàng Ajax";
         $meta_title = "Giỏ hàng Ajax";
@@ -24,7 +67,11 @@ class CartController extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get(); 
         $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
 
+<<<<<<< Updated upstream
         return view('pages.cart.cart_ajax')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
+=======
+        return view('pages.cart.cart_ajax')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('slider',$slider);
+>>>>>>> Stashed changes
     }
     public function add_cart_ajax(Request $request){
         // Session::forget('cart');
@@ -64,7 +111,12 @@ class CartController extends Controller
             Session::put('cart',$cart);
         }
        
+<<<<<<< Updated upstream
         Session::save();    
+=======
+        Session::save();
+
+>>>>>>> Stashed changes
     }   
     public function delete_product($session_id){
         $cart = Session::get('cart');
@@ -138,7 +190,11 @@ class CartController extends Controller
         $data['price'] = $product_info->product_price;
         $data['weight'] = $product_info->product_price;
         $data['options']['image'] = $product_info->product_image;
+<<<<<<< Updated upstream
         CartController::add($data);
+=======
+        Cart::add($data);
+>>>>>>> Stashed changes
         // Cart::destroy();
         return Redirect::to('/show-cart');
      //Cart::destroy();
@@ -156,13 +212,21 @@ class CartController extends Controller
         return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
     }
     public function delete_to_cart($rowId){
+<<<<<<< Updated upstream
         CartController::update($rowId,0);
+=======
+        Cart::update($rowId,0);
+>>>>>>> Stashed changes
         return Redirect::to('/show-cart');
     }
     public function update_cart_quantity(Request $request){
         $rowId = $request->rowId_cart;
         $qty = $request->cart_quantity;
+<<<<<<< Updated upstream
         CartController::update($rowId,$qty);
+=======
+        Cart::update($rowId,$qty);
+>>>>>>> Stashed changes
         return Redirect::to('/show-cart');
     }
     
