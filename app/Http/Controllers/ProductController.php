@@ -116,22 +116,23 @@ class ProductController extends Controller
         Session::put('message','Xóa sản phẩm thành công');
         return Redirect::to('all-product');
     }
-    public function details_product(Request $request) {
-        $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get(); 
-        $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get(); 
-    
-        $productId = $request->input('product_id'); // Lấy ID sản phẩm từ request, bạn cần chỉnh sửa phần này để lấy ID sản phẩm từ đúng trường trong request của bạn
-        
-        $details_product = DB::table('tbl_product')
-            ->join('tbl_category_product', 'tbl_category_product.category_id', '=', 'tbl_product.category_id')
-            ->join('tbl_brand', 'tbl_brand.brand_id', '=', 'tbl_product.brand_id')
-            ->where('tbl_product.product_id', $productId)
-            ->select('tbl_product.*', 'tbl_category_product.category_name', 'tbl_brand.brand_name')
-            ->get();
-         
-        return view('pages.sanpham.show_details')
-            ->with('category', $cate_product)
-            ->with('brand', $brand_product)
-            ->with('product_details', $details_product);
-    }
+    public function details_product(Request $request){
+        //slide
+      // $slider = Slider::orderBy('slider_id','DESC')->where('slider_status','1')->take(4)->get();
+
+       $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get(); 
+       $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
+
+       $details_product = DB::table('tbl_product')
+       ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
+       ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id');
+     
+
+      
+      
+      
+
+       return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product);
+
+   }
 }

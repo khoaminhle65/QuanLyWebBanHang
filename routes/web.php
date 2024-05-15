@@ -21,9 +21,9 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('trangchu', [HomeController::class, 'index'])->name('home');
 Route::get('tim-kiem', [HomeController::class, 'search'])->name('search');
 //Danh muc san pham trang chu
-Route::get('chi-tiet/{product_name}',[ProductController::class, 'details_product'])->name('show_details');
-Route::get('danh-muc/{category_id}',[CategoryProductController::class, 'show_category_home'])->name('show_category');
-Route::get('thuong-hieu/{brand_id}',[BrandProductController::class, 'show_brand_home'])->name('show_brand');
+Route::get('chi-tiet/{product_name}', [ProductController::class, 'details_product'])->name('show_details');
+Route::get('danh-muc/{category_id}', [CategoryProductController::class, 'show_category_home'])->name('show_category');
+Route::get('thuong-hieu/{brand_id}', [BrandProductController::class, 'show_brand_home'])->name('show_brand');
 
 //BackEnd
 //dang nhap
@@ -65,7 +65,7 @@ Route::get('all-product', [ProductController::class, 'all_product'])->name('all_
 Route::get('add-product', [ProductController::class, 'add_product'])->name('add_product');
 Route::post('save-product', [ProductController::class, 'save_product'])->name('save_product');
 
-Route::get('unactive-product/{product_id}',[ProductController::class, 'unactive_product'])->name('unactive_product');
+Route::get('unactive-product/{product_id}', [ProductController::class, 'unactive_product'])->name('unactive_product');
 Route::get('active-product/{product_id', [ProductController::class, 'active_product'])->name('active_product');
 Route::get('edit-product/{product_id}', [ProductController::class, 'edit_product'])->name('edit_product');
 Route::post('update-product/{product_id}', [ProductController::class, 'update_product'])->name('updatate_product');

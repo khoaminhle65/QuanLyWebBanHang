@@ -57,7 +57,15 @@ class HomeController extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
         $search_product = DB::table('tbl_product')->where('product_name', 'like', '%' . $keywords . '%')->paginate(2);
+=======
+        $search_product = DB::table('tbl_product')->where('product_name', 'like', '%' . $keywords . '%')->paginate(2)->appends(request()->query());
+>>>>>>> TimKiem
+=======
+        $search_product = DB::table('tbl_product')->where('product_name', 'like', '%' . $keywords . '%')->paginate(6)->appends(request()->query());
+>>>>>>> PhanTrang
 
         return view('pages.search')->with('category', $cate_product)->with('brand', $brand_product)->with('search_product', $search_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical);
     }
