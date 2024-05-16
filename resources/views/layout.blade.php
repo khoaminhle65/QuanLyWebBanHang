@@ -82,7 +82,7 @@
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                
-                                <li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
+                                <li><a href="{{ URL::to('account') }}"><i class="fa fa-user"></i> Tài khoản</a></li>
                                 <?php
                                    $customer_id = Session::get('customer_id');
                                    $shipping_id = Session::get('shipping_id');

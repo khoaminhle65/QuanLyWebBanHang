@@ -7,7 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +31,7 @@ Route::get('thuong-hieu/{brand_id}', [BrandProductController::class, 'show_brand
 //BackEnd
 //dang nhap
 Route::get('admin', [AdminController::class, 'admin']);
-Route::get('login', [AdminController::class, 'login'])->name('login');
+Route::get('admin', [AdminController::class, 'login'])->name('login');
 
 //trang dashboard
 Route::get('layout', [AdminController::class, 'layout'])->name('layout');
@@ -98,6 +99,27 @@ Route::post('/calculate-fee', [CheckoutController::class, 'calculate_fee']);
 Route::post('/select-delivery-home', [CheckoutController::class, 'select_delivery_home']);
 Route::post('/confirm-order', [CheckoutController::class, 'confirm_order']);
 
+// account
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/account', [AccountController::class, 'edit'])->name('account.edit');
+    Route::post('/account', [AccountController::class, 'update'])->name('account.update');
+    Route::post('/account/deactivate', [AccountController::class, 'deactivate'])->name('account.deactivate');
+});
+
+//login user
+
+Route::get('/dangnhap', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/dangnhap', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+
 
 //thoat
 Route::get('logout', [AdminController::class, 'logout'])->name('logout');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

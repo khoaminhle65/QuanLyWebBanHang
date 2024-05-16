@@ -34,14 +34,14 @@ public function layout(){
        }
        else{
         Session ::put('message','Mat khau hoac tai khoan sai!');
-        return Redirect::to('/login');
+        return Redirect::to('/admin');
        }
         // return view('admin.dashboard');
       }
       public function logout(){
         Session::put('admin_name',null);
         Session::put('admin_id',null);
-        return Redirect::to('/login');
+        return Redirect::to('/admin');
       }
 }
 
