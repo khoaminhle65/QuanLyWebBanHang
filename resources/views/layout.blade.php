@@ -246,8 +246,19 @@
                                 </ul>
                             </div>
                         </div><!--/brands_products-->
-                        
-                     
+                        <div class="Sap xep"><!--brands_products-->
+                        <label for="amount">Sắp xếp</label>
+                            
+                            <form >
+                            {{csrf_field()}}
+                                    <select name="sort" id="sort" class="form-control">
+                                        <option value="{{Request::url()}}?sort_by=none">--</option>
+                                        <option value="{{Request::url()}}?sort_by=kytu_az">A-Z</option>
+                                        <option value="{{Request::url()}}?sort_by=kytu_za">Z-A</option>
+                                    </select>
+                                
+                            </form>
+                        </div><!--/brands_products-->
                     
                     </div>
                 </div>
@@ -520,6 +531,16 @@
         });
     });
     </script>
-  
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#sort').on('change',function(){
+                var url = $(this).val();
+                if (url) {
+                    window.location = url;
+                }
+                return false;
+        });
+    });
+    </script>
 </body>
 </html>
