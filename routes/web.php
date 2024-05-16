@@ -19,15 +19,10 @@ use App\Http\Controllers\CheckoutController;
 */
 //Frontend
 Route::get('/', [HomeController::class, 'index']);
-<<<<<<< HEAD
+
 Route::get('trangchu', [HomeController::class, 'index'])->name('home');
 Route::get('tim-kiem', [HomeController::class, 'search'])->name('search');
-=======
-Route::get('trang-chu', [HomeController::class, 'index'])->name('home');
-Route::post('tim-kiem', [HomeController::class, 'search'])->name('search');
 
-
->>>>>>> TimKiem
 //Danh muc san pham trang chu
 Route::get('chi-tiet/{product_name}', [ProductController::class, 'details_product'])->name('show_details');
 Route::get('danh-muc/{category_id}', [CategoryProductController::class, 'show_category_home'])->name('show_category');
