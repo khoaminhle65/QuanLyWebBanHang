@@ -35,15 +35,19 @@ class AccountController extends Controller
 
         return redirect()->route('account.edit')->with('success', 'Thông tin đã được cập nhật.');
     }
-
-    public function deactivate()
+    public function deactivate(Request $request)
     {
-        $user = Auth::user();
-        $user->active = false; // Assuming you have an 'active' field in users table
+        // Lấy người dùng hiện tại đăng nhập
+        $user = $request->user();
+    
+        // Vô hiệu hóa tài khoản của người dùng hiện tại
+        $user->active = false; // Đặt trường 'active' của người dùng thành false
         $user->save();
-
+    
+        // Đăng xuất người dùng sau khi vô hiệu hóa tài khoản
         Auth::logout();
-
-        return redirect('/')->with('success', 'Tài khoản đã bị vô hiệu hóa.');
+    
+        // Chuyển hướng người dùng đến trang đăng nhập và hiển thị thông báo
+        return redirect()->route('login')->with('success', 'Tài khoản của bạn đã bị vô hiệu hóa.');
     }
 }
